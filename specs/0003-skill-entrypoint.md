@@ -20,11 +20,11 @@ Create the `refactor-arch` Claude Code skill entry point that drives Analysis, A
 - R10: SKILL.md SHALL stay under 500 lines.
 
 ## Acceptance criteria
-- [ ] AC1: The frontmatter parses as YAML with `name == "refactor-arch"` and a non-empty `description`. (R1)
-- [ ] AC2: SKILL.md contains the headings for Phase 1, 2 and 3 and references every file under `references/` by relative path. (R2)
-- [ ] AC3: SKILL.md contains the exact confirmation sentence of R5 and an explicit rule forbidding file changes before an affirmative answer. (R5)
-- [ ] AC4: SKILL.md contains the baseline → refactor → smoke test → compare steps and the 3-attempt bound. (R6, R7)
-- [ ] AC5: SKILL.md does not contain `produtos`, `AppManager`, `loja.db`, `tasks.db`, `code-smells-project`, `ecommerce-api-legacy` or `task-manager-api`; it has fewer than 500 lines. (R9, R10)
+- [x] AC1: The frontmatter parses as YAML with `name == "refactor-arch"` and a non-empty `description`. (R1)
+- [x] AC2: SKILL.md contains the headings for Phase 1, 2 and 3 and references every file under `references/` by relative path. (R2)
+- [x] AC3: SKILL.md contains the exact confirmation sentence of R5 and an explicit rule forbidding file changes before an affirmative answer. (R5)
+- [x] AC4: SKILL.md contains the baseline → refactor → smoke test → compare steps and the 3-attempt bound. (R6, R7)
+- [x] AC5: SKILL.md does not contain `produtos`, `AppManager`, `loja.db`, `tasks.db`, `code-smells-project`, `ecommerce-api-legacy` or `task-manager-api`; it has fewer than 500 lines. (R9, R10)
 
 ## Unit tests
 - T1: `tests/test_skill_structure.py` — frontmatter name/description (AC1).
