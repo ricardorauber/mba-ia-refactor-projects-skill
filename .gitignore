@@ -10,3 +10,13 @@ venv/
 # SQLite
 *.db
 instance/
+
+# Claude Code local settings (skills stay tracked)
+**/.claude/settings.local.json
+
+# pytest
+.pytest_cache/
+
+# Logs (skill run evidence under reports/logs/ stays tracked)
+*.log
+!reports/logs/*.log

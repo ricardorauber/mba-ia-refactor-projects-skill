@@ -17,10 +17,10 @@ Prepare the fork so the skill, the reports and the validation tests can be built
 - R7: ADR 0004 SHALL state: routes, methods and status codes of every original endpoint are preserved; response bodies may change only to remove sensitive data (passwords, secret keys) and passwords become real hashes while seed logins keep working; dangerous admin routes stay but require an admin token read from an environment variable; the HTTP port becomes configurable through `PORT` keeping the original default, because ports 5000 and 3000 are taken on this machine.
 
 ## Acceptance criteria
-- [ ] AC1: `git check-ignore .claude/settings.local.json` succeeds and `git check-ignore code-smells-project/.claude/skills/refactor-arch/SKILL.md` fails; original `.gitignore` entries are still present. (R1)
-- [ ] AC2: In a fresh venv, `pip install -r requirements-dev.txt && pytest` from the repo root exits 0 (no tests or only passing tests collected). (R2)
-- [ ] AC3: `git ls-files reports` lists `reports/.gitkeep` and `reports/logs/.gitkeep`. (R3)
-- [ ] AC4: The four ADR files exist with all seven fields and the decisions in R5–R7. (R4–R7)
+- [x] AC1: `git check-ignore .claude/settings.local.json` succeeds and `git check-ignore code-smells-project/.claude/skills/refactor-arch/SKILL.md` fails; original `.gitignore` entries are still present. (R1)
+- [x] AC2: In a fresh venv, `pip install -r requirements-dev.txt && pytest` from the repo root exits 0 (no tests or only passing tests collected). (R2)
+- [x] AC3: `git ls-files reports` lists `reports/.gitkeep` and `reports/logs/.gitkeep`. (R3)
+- [x] AC4: The four ADR files exist with all seven fields and the decisions in R5–R7. (R4–R7)
 
 ## Unit tests
 - T1: none — configuration and documentation only; verified by AC1–AC4.
