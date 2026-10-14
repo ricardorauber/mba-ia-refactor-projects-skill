@@ -118,3 +118,41 @@ def test_every_catalog_entry_points_to_an_existing_playbook_pattern():
 
     for entry_id, entry in catalog_entries().items():
         assert entry["fix"] in known, entry_id
+
+
+def playbook_patterns():
+    text = reference_text("refactoring-playbook.md")
+    blocks = re.split(r"^### (?=PB-\d{2})", text, flags=re.M)[1:]
+    return {block[:5]: block for block in blocks}
+
+
+def test_playbook_patterns_have_before_and_after_code():
+    patterns = playbook_patterns()
+
+    assert len(patterns) >= 14
+    for pattern_id, block in patterns.items():
+        assert re.search(r"\*\*Before\*\*\n```\w+", block), pattern_id
+        assert re.search(r"\*\*After\*\*\n```\w+", block), pattern_id
+
+
+def test_playbook_has_python_and_javascript_examples():
+    both = [
+        pattern_id
+        for pattern_id, block in playbook_patterns().items()
+        if "```python" in block and re.search(r"```(js|javascript)\b", block)
+    ]
+
+    assert len(both) >= 8
+
+
+def test_playbook_covers_every_catalog_entry():
+    referenced = set(re.findall(r"AP-\d{2}", reference_text("refactoring-playbook.md")))
+
+    assert set(catalog_entries()) <= referenced
+
+
+def test_mvc_guidelines_define_every_layer():
+    text = reference_text("mvc-guidelines.md")
+
+    for layer in ["Config", "Models", "Views", "Controllers", "Middlewares", "Composition root"]:
+        assert re.search(rf"^### {layer}", text, re.M), layer

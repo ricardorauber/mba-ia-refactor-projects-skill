@@ -16,9 +16,9 @@ Define the target MVC architecture and the concrete transformations Phase 3 appl
 - R6: The playbook SHALL cover every anti-pattern ID in the catalog, including deprecated-API replacement, parameterized queries, extracting config, password hashing with a migration path for seed data, N+1 → join/eager load, centralized error handler, admin-token guard, and the smoke-test template for Python and Node.js.
 
 ## Acceptance criteria
-- [ ] AC1: `mvc-guidelines.md` has sections for each layer in R1, the layouts in R2, the rules in R3 and the adaptation guidance in R4. (R1–R4)
-- [ ] AC2: The playbook has ≥14 `PB-NN` patterns, each with `Before` and `After` code blocks, ≥8 with both Python and JavaScript. (R5)
-- [ ] AC3: Every `AP-NN` in the catalog is referenced by at least one `PB-NN`. (R6)
+- [x] AC1: `mvc-guidelines.md` has sections for each layer in R1, the layouts in R2, the rules in R3 and the adaptation guidance in R4. (R1–R4)
+- [x] AC2: The playbook has ≥14 `PB-NN` patterns, each with `Before` and `After` code blocks, ≥8 with both Python and JavaScript. (R5)
+- [x] AC3: Every `AP-NN` in the catalog is referenced by at least one `PB-NN`. (R6)
 
 ## Unit tests
 - T1: `tests/test_skill_structure.py` — count `### PB-NN` headings ≥14 and each has a `Before` and an `After` fenced block (AC2).
