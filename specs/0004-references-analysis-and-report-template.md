@@ -17,8 +17,8 @@ Give the skill the knowledge for Phase 1 (stack and architecture detection) and 
 - R7: `report-template.md` SHALL define the Phase 3 completion block (new structure tree, validation checklist with `✓`/`✗`, baseline vs after table per endpoint).
 
 ## Acceptance criteria
-- [ ] AC1: `project-analysis.md` names the manifests/imports for each stack in R1 and has sections for database, architecture, endpoint inventory, domain and file counting. (R1–R4)
-- [ ] AC2: `report-template.md` contains a full example report with the fields of R5, the rules of R6 and the Phase 3 block of R7. (R5–R7)
+- [x] AC1: `project-analysis.md` names the manifests/imports for each stack in R1 and has sections for database, architecture, endpoint inventory, domain and file counting. (R1–R4)
+- [x] AC2: `report-template.md` contains a full example report with the fields of R5, the rules of R6 and the Phase 3 block of R7. (R5–R7)
 
 ## Unit tests
 - T1: `tests/test_skill_structure.py` — `report-template.md` contains `## Summary`, `## Findings`, `File:`, `Description:`, `Impact:`, `Recommendation:` and the confirmation question (AC2).

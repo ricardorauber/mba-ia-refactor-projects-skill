@@ -55,3 +55,21 @@ def test_skill_is_project_agnostic_and_concise():
     for token in PROJECT_SPECIFIC_TOKENS:
         assert token not in text, token
     assert len(text.splitlines()) < 500
+
+
+def reference_text(name):
+    return (REFERENCES_DIR / name).read_text(encoding="utf-8")
+
+
+def test_report_template_defines_every_report_field():
+    text = reference_text("report-template.md")
+
+    for marker in ["## Summary", "## Findings", "File:", "Description:", "Impact:", "Recommendation:", CONFIRMATION]:
+        assert marker in text, marker
+
+
+def test_project_analysis_covers_the_manifests_of_each_stack():
+    text = reference_text("project-analysis.md")
+
+    for manifest in ["requirements.txt", "package.json", "pom.xml", "go.mod", "composer.json", "Gemfile", ".csproj"]:
+        assert manifest in text, manifest
