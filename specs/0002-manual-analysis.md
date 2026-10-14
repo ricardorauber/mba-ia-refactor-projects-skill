@@ -15,10 +15,10 @@ Document, before writing the skill, the problems found by reading the three lega
 - R5: The section SHALL mark which problems are deprecated-API usages, when any exist.
 
 ## Acceptance criteria
-- [ ] AC1: `README.md` has a `## Análise Manual` heading with three project subsections and tables with the four columns in R1. (R1)
-- [ ] AC2: Each table has ≥5 rows with ≥1 CRITICAL/HIGH, ≥2 MEDIUM and ≥2 LOW, ordered by severity. (R2, R4)
-- [ ] AC3: Spot-checking every row against `git show 6d1ce62:<file>` confirms the cited lines contain the described problem. (R3)
-- [ ] AC4: At least one row (in `task-manager-api`) is marked as deprecated API. (R5)
+- [x] AC1: `README.md` has a `## Análise Manual` heading with three project subsections and tables with the four columns in R1. (R1)
+- [x] AC2: Each table has ≥5 rows with ≥1 CRITICAL/HIGH, ≥2 MEDIUM and ≥2 LOW, ordered by severity. (R2, R4)
+- [x] AC3: Spot-checking every row against `git show 6d1ce62:<file>` confirms the cited lines contain the described problem. (R3)
+- [x] AC4: At least one row (in `task-manager-api`) is marked as deprecated API. (R5)
 
 ## Unit tests
 - T1: `tests/test_readme.py` — parses the `## Análise Manual` section; for each project subsection asserts ≥5 rows, the severity minimums in R2 and CRITICAL→LOW ordering (AC2).
