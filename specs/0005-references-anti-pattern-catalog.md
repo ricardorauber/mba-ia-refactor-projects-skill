@@ -15,10 +15,10 @@ Give Phase 2 an actionable catalog of anti-patterns with concrete detection sign
 - R5: The catalog SHALL tell the agent how to assign severity when a finding matches several entries (highest wins) and how to group repeated occurrences into one finding listing every location.
 
 ## Acceptance criteria
-- [ ] AC1: Counting `AP-NN` entries gives ≥14, with ≥3 per severity. (R1, R2)
-- [ ] AC2: Every topic in R3 maps to at least one entry. (R3)
-- [ ] AC3: The deprecated-API table has every pair listed in R4. (R4)
-- [ ] AC4: Every entry names a playbook pattern ID. (R1)
+- [x] AC1: Counting `AP-NN` entries gives ≥14, with ≥3 per severity. (R1, R2)
+- [x] AC2: Every topic in R3 maps to at least one entry. (R3)
+- [x] AC3: The deprecated-API table has every pair listed in R4. (R4)
+- [x] AC4: Every entry names a playbook pattern ID. (R1)
 
 ## Unit tests
 - T1: `tests/test_skill_structure.py` — parse `### AP-NN` headings and their `Severity:` lines; assert ≥14 entries and ≥3 of each severity (AC1).

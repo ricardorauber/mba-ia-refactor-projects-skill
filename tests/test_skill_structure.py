@@ -1,6 +1,8 @@
 import re
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent
 SKILL_DIR = ROOT / "code-smells-project" / ".claude" / "skills" / "refactor-arch"
 SKILL_MD = SKILL_DIR / "SKILL.md"
@@ -73,3 +75,46 @@ def test_project_analysis_covers_the_manifests_of_each_stack():
 
     for manifest in ["requirements.txt", "package.json", "pom.xml", "go.mod", "composer.json", "Gemfile", ".csproj"]:
         assert manifest in text, manifest
+
+
+def catalog_entries():
+    text = reference_text("anti-patterns.md")
+    blocks = re.split(r"^### (?=AP-\d{2})", text, flags=re.M)[1:]
+    entries = {}
+    for block in blocks:
+        entry_id = block[:5]
+        severity = re.search(r"^- Severity: (CRITICAL|HIGH|MEDIUM|LOW)$", block, re.M)
+        fix = re.search(r"^- Fix: (PB-\d{2})$", block, re.M)
+        entries[entry_id] = {
+            "severity": severity.group(1) if severity else None,
+            "fix": fix.group(1) if fix else None,
+        }
+    return entries
+
+
+def playbook_ids():
+    return set(re.findall(r"^### (PB-\d{2})", reference_text("refactoring-playbook.md"), re.M))
+
+
+def test_catalog_has_enough_entries_with_distributed_severities():
+    severities = [entry["severity"] for entry in catalog_entries().values()]
+
+    assert len(severities) >= 14
+    for severity in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
+        assert severities.count(severity) >= 3, severity
+
+
+def test_catalog_covers_the_deprecated_apis():
+    text = reference_text("anti-patterns.md")
+    deprecated = text[text.index("Deprecated APIs"):]
+
+    for api in ["Query.get", "utcnow", "new Buffer", "bodyParser", "req.param", "before_first_request", "md5"]:
+        assert api in deprecated, api
+
+
+@pytest.mark.skipif(not playbook_ids(), reason="refactoring playbook has no patterns yet")
+def test_every_catalog_entry_points_to_an_existing_playbook_pattern():
+    known = playbook_ids()
+
+    for entry_id, entry in catalog_entries().items():
+        assert entry["fix"] in known, entry_id
