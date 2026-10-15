@@ -14,10 +14,10 @@ Document how the skill was built, the results on the three projects and how to r
 - R4: The fork SHALL be public with all specs, ADRs, skill copies, refactored code, reports, logs and tests on `main`; no `.env`, database file, `node_modules` or virtualenv SHALL be committed.
 
 ## Acceptance criteria
-- [ ] AC1: The README has the four sections (A from 0002, B, C, D) with the content of R1–R3. (R1–R3)
-- [ ] AC2: The checklist numbers in "Resultados" match the reports and logs. (R2)
-- [ ] AC3: `pytest` at the repo root passes. (R4)
-- [ ] AC4: `gh repo view ricardorauber/mba-ia-refactor-projects-skill --json isFork,visibility` shows a public fork and `git ls-files | grep -E "\.db$|node_modules|\.venv|\.env$"` is empty. (R4)
+- [x] AC1: The README has the four sections (A from 0002, B, C, D) with the content of R1–R3. (R1–R3)
+- [x] AC2: The checklist numbers in "Resultados" match the reports and logs. (R2)
+- [x] AC3: `pytest` at the repo root passes. (R4)
+- [x] AC4: `gh repo view ricardorauber/mba-ia-refactor-projects-skill --json isFork,visibility` shows a public fork and `git ls-files | grep -E "\.db$|node_modules|\.venv|\.env$"` is empty. (R4)
 
 ## Unit tests
 - T1: `tests/test_readme.py` — README contains the headings `Análise Manual`, `Construção da Skill`, `Resultados`, `Como Executar` (AC1).

@@ -1,0 +1,16 @@
+✔ admin report requires the admin token (426.022625ms)
+✔ admin report with the token returns the seeded courses (3.722916ms)
+✔ checkout succeeds for a new and an existing user (48.357708ms)
+✔ checkout rejects denied payments, missing fields and unknown courses (3.821875ms)
+✔ invalid input answers 400 without leaking a stack trace (2.667917ms)
+✔ report reflects the checkouts (1.171333ms)
+✔ deleting a user also removes their enrollments and payments (2.559834ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 647.695708
+exit=0
