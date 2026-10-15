@@ -21,3 +21,13 @@ Runs that failed an acceptance criterion and led to a change in the skill. The l
 ## Project 2 — iteration 1 (accepted)
 
 - Result: Phase 1 detected Node.js + Express 4.x, in-memory SQLite and the 5 tables; Phase 2 reported 19 findings and stopped with no file changed; Phase 3 kept every status code (only `/api/admin/financial-report` now requires the admin token) and its `node --test` smoke test passed (7 tests). No skill change was needed.
+
+## Project 3 — iteration 1
+
+- Result: Phases 1–2 correct (Python/Flask 3.0.0, Task Manager domain, partially layered, 18 findings with two deprecated-API findings), but one finding cited `routes/report_routes.py:157-224` while the file has 223 lines; `tests/test_reports.py` rejected the report.
+- Cause: the report template asked for verified lines but did not say how to close a range at the end of a file.
+- Change: `report-template.md` requires ranges that reach the end of a file to stop at its last line number (checked with `awk 'END { print NR }'`). Phases 1–2 were re-run before Phase 3.
+
+## Project 3 — iteration 2 (accepted)
+
+- Result: same Phase 1–2 findings with exact lines; Phase 3 kept the existing models and `routes/`, added config, controllers, middlewares and an app factory, moved the categories CRUD to its own blueprint (same URLs), removed the unused `services/` and `utils/`, replaced `Query.get()` and `datetime.utcnow()`, kept `seed.py` and the seed logins, and its smoke test passed (27 checks). The only status-code change is a `500 → 400` for a string `priority`, which the guidelines allow.

@@ -74,3 +74,12 @@ def test_report_locations_exist_in_the_original_code(report):
             match = LOCATION.match(location)
             last_line = int(match.group("end") or match.group("start"))
             assert last_line <= original_line_count(project, match.group("path")), location
+
+
+def test_partially_layered_project_report_flags_deprecated_apis():
+    report = ROOT / "reports" / "audit-project-3.md"
+    if not report.exists():
+        pytest.skip("project 3 report not generated yet")
+    _, findings, _ = parse_report(report)
+
+    assert any("deprecated" in (f["title"] + f["body"]).lower() for f in findings)

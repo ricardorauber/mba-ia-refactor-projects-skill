@@ -6,7 +6,7 @@ Fixed output formats for the three phases. Print them inside a fenced block only
 
 - Banners, headings, field labels and severity names stay **in English** exactly as below (`PHASE 1: PROJECT ANALYSIS`, `## Summary`, `File:`, `Description:`, `Impact:`, `Recommendation:`).
 - Free text — the domain line, descriptions, impacts and recommendations — is written **in Brazilian Portuguese**.
-- Paths are **relative to the project root**. Lines are `path:line` or `path:start-end`; several locations are separated by `, `. Never write a line you did not verify by reading the file.
+- Paths are **relative to the project root**. Lines are `path:line` or `path:start-end`; several locations are separated by `, `. Never write a line you did not verify by reading the file. A range that runs to the end of a file ends at the file's **last line number** (check with `awk 'END { print NR }' <file>`), never one past it.
 - Banners are lines of exactly 32 `=` characters.
 
 ## Phase 1 block

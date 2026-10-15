@@ -16,10 +16,10 @@ Prove the skill adapts to a project that already has some layering: it must stil
 - R6: Iteration rule of 0007 R8 applies.
 
 ## Acceptance criteria
-- [ ] AC1: The three skill copies are identical. (R1)
-- [ ] AC2: The Phase 1 block matches R2. (R2)
-- [ ] AC3: `reports/audit-project-3.md` passes the report checks, maps ≥5 findings to manual-analysis rows and has a deprecated-API finding. (R3)
-- [ ] AC4: Seed + boot + smoke test pass; login with a seed user returns 200; no `Query.get(` or `utcnow(` remains in the refactored code. (R4, R5)
+- [x] AC1: The three skill copies are identical. (R1)
+- [x] AC2: The Phase 1 block matches R2. (R2)
+- [x] AC3: `reports/audit-project-3.md` passes the report checks, maps ≥5 findings to manual-analysis rows and has a deprecated-API finding. (R3)
+- [x] AC4: Seed + boot + smoke test pass; login with a seed user returns 200; no `Query.get(` or `utcnow(` remains in the refactored code. (R4, R5)
 
 ## Unit tests
 - T1: covered by `tests/test_skill_structure.py` T1 of 0008 and `tests/test_reports.py` (AC1, AC3).

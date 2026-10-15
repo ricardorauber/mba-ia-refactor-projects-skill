@@ -48,13 +48,13 @@ command -v caffeinate > /dev/null && RUNNER=(caffeinate -i "${RUNNER[@]}")
 cd "$PROJECT_DIR"
 STATUS=0
 if [[ "$PHASE" == "phase12" ]]; then
-  "${RUNNER[@]}" claude "${COMMON_ARGS[@]}" "/refactor-arch" > "$LOG_BASE.jsonl" || STATUS=$?
+  "${RUNNER[@]}" claude "${COMMON_ARGS[@]}" "/refactor-arch" < /dev/null > "$LOG_BASE.jsonl" || STATUS=$?
 else
   if [[ ! -s "$SESSION_FILE" ]]; then
     echo "run phase12 first: $SESSION_FILE is missing" >&2
     exit 1
   fi
-  "${RUNNER[@]}" claude "${COMMON_ARGS[@]}" --resume "$(cat "$SESSION_FILE")" "y" > "$LOG_BASE.jsonl" || STATUS=$?
+  "${RUNNER[@]}" claude "${COMMON_ARGS[@]}" --resume "$(cat "$SESSION_FILE")" "y" < /dev/null > "$LOG_BASE.jsonl" || STATUS=$?
 fi
 
 python3 "$ROOT/scripts/render_transcript.py" "$LOG_BASE.jsonl" "$LOG_BASE.md" > "$LOG_BASE.session"
