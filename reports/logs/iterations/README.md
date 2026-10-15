@@ -17,3 +17,7 @@ Runs that failed an acceptance criterion and led to a change in the skill. The l
 ## Project 1 — iteration 3 (accepted)
 
 - Result: same Phase 1–2 output (20 findings); Phase 3 kept all 17 public routes with the baseline status codes, guarded only `/admin/query` and `/admin/reset-db`, kept the seed logins, and its smoke test passed (29 checks).
+
+## Project 2 — iteration 1 (accepted)
+
+- Result: Phase 1 detected Node.js + Express 4.x, in-memory SQLite and the 5 tables; Phase 2 reported 19 findings and stopped with no file changed; Phase 3 kept every status code (only `/api/admin/financial-report` now requires the admin token) and its `node --test` smoke test passed (7 tests). No skill change was needed.

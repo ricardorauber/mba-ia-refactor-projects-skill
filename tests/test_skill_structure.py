@@ -156,3 +156,12 @@ def test_mvc_guidelines_define_every_layer():
 
     for layer in ["Config", "Models", "Views", "Controllers", "Middlewares", "Composition root"]:
         assert re.search(rf"^### {layer}", text, re.M), layer
+
+
+def test_every_skill_copy_matches_the_original():
+    original = {path.relative_to(SKILL_DIR): path.read_bytes() for path in SKILL_DIR.rglob("*") if path.is_file()}
+    copies = [path.parent for path in ROOT.glob("*/.claude/skills/refactor-arch/SKILL.md") if path.parent != SKILL_DIR]
+
+    for copy in copies:
+        files = {path.relative_to(copy): path.read_bytes() for path in copy.rglob("*") if path.is_file()}
+        assert files == original, copy

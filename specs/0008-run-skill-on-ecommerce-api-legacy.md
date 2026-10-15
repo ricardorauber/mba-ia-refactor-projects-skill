@@ -16,11 +16,11 @@ Prove the same skill works unchanged on a different stack: the Express LMS API w
 - R6: Iteration rule of 0007 R8 applies.
 
 ## Acceptance criteria
-- [ ] AC1: `diff -r code-smells-project/.claude/skills/refactor-arch ecommerce-api-legacy/.claude/skills/refactor-arch` is empty. (R1)
-- [ ] AC2: The Phase 1 block matches R2. (R2)
-- [ ] AC3: `reports/audit-project-2.md` passes the report checks and maps ≥5 findings to manual-analysis rows. (R3)
-- [ ] AC4: The refactored app boots, the smoke test passes and the Phase 3 log shows no unexpected status-code difference; `grep -rn "pk_live_1234567890abcdef\|senha_super_secreta_prod_123"` finds nothing in code. (R4, R5)
-- [ ] AC5: `package.json` dependencies are unchanged or only gain packages justified in the Phase 3 output. (R5)
+- [x] AC1: `diff -r code-smells-project/.claude/skills/refactor-arch ecommerce-api-legacy/.claude/skills/refactor-arch` is empty. (R1)
+- [x] AC2: The Phase 1 block matches R2. (R2)
+- [x] AC3: `reports/audit-project-2.md` passes the report checks and maps ≥5 findings to manual-analysis rows. (R3)
+- [x] AC4: The refactored app boots, the smoke test passes and the Phase 3 log shows no unexpected status-code difference; `grep -rn "pk_live_1234567890abcdef\|senha_super_secreta_prod_123"` finds nothing in code. (R4, R5)
+- [x] AC5: `package.json` dependencies are unchanged or only gain packages justified in the Phase 3 output. (R5)
 
 ## Unit tests
 - T1: `tests/test_skill_structure.py` — every `*/.claude/skills/refactor-arch` copy present in the repo is identical to the project 1 copy (AC1).
