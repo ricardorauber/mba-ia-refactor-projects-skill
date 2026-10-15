@@ -191,7 +191,7 @@ Fixes: AP-04, AP-22
 
 1. Add `ADMIN_TOKEN` to the config (no default).
 2. Create an auth middleware/decorator comparing the `X-Admin-Token` header with a constant-time comparison; `401` when missing, `403` when wrong or when no token is configured.
-3. Apply it to dangerous/private routes. Narrow arbitrary execution to the safe subset (single read-only `SELECT`).
+3. Apply it only to admin routes as defined in the guidelines (admin namespace, or client-supplied SQL/code, or table wipes). Narrow arbitrary execution to the safe subset (single read-only `SELECT`). Other routes flagged by AP-22 stay public and are listed as remaining findings.
 
 **Before**
 ```python
@@ -234,7 +234,7 @@ def run_read_only_query(sql):
 
 **Before**
 ```javascript
-app.delete('/api/users/:id', (req, res) => { db.run('DELETE FROM users WHERE id = ?', [req.params.id]); });
+app.get('/api/admin/report', (req, res) => { db.all('SELECT * FROM payments', [], (err, rows) => res.json(rows)); });
 ```
 
 **After**
@@ -254,7 +254,7 @@ function adminAuth(config) {
   };
 }
 
-router.delete('/users/:id', adminAuth(config), asyncHandler(controller.deleteUser));
+router.get('/admin/report', adminAuth(config), asyncHandler(controller.report));   // admin namespace only
 ```
 
 ---

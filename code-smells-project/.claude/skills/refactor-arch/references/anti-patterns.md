@@ -14,7 +14,7 @@ Knowledge for **Phase 2**. Each entry has a stable ID, a fixed severity, concret
 1. For every entry, run the greppable signals over the whole project (respecting the scan exclusions) and **read each hit** to confirm it; a grep hit alone is not a finding.
 2. **One finding per anti-pattern**, listing every confirmed location. Split into separate findings only when the same anti-pattern has clearly different impacts (e.g. SQL injection in login vs in a search).
 3. **Multiple matches:** when one piece of code matches several entries (e.g. a god file that also concatenates SQL), report each anti-pattern separately; when choosing the severity of a single finding that fits several entries, **the highest severity wins**.
-4. Do not report an entry when the signal is a false positive (e.g. a `?` placeholder query is not SQL injection; a secret read from `os.environ` with no literal fallback is not hardcoded).
+4. Do not report an entry when the signal is a false positive (e.g. a `?` placeholder query is not SQL injection; a secret read from `os.environ` with no literal fallback is not hardcoded; demo passwords of seed/fixture users are test data, not system credentials — report their plain-text storage under AP-18, not AP-01).
 5. Check the **Deprecated APIs** table against the versions found in Phase 1.
 
 ## Summary

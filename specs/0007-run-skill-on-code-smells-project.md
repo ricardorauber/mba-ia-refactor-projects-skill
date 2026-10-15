@@ -18,12 +18,12 @@ Prove the skill on the unstructured Flask e-commerce monolith: correct analysis,
 - R8: IF any criterion fails, THEN the reference files (not the project code by hand) SHALL be adjusted and the skill re-run from a clean checkout of the project (`git checkout -- code-smells-project && git clean -fd code-smells-project`, keeping the skill), up to 4 iterations; each iteration and its cause SHALL be recorded for the README.
 
 ## Acceptance criteria
-- [ ] AC1: `reports/logs/project-1-phase12.jsonl` and `project-1-phase3.jsonl` exist and come from `claude-opus-5-5`. (R1)
-- [ ] AC2: The Phase 1 block matches R2. (R2)
-- [ ] AC3: `reports/audit-project-1.md` passes the report checks and ≥5 of its findings map to manual-analysis rows of project 1. (R3, R5)
-- [ ] AC4: `git status --porcelain code-smells-project` is empty right after the phase12 run. (R4)
-- [ ] AC5: The refactored tree has config, models, views or routes, controllers and middleware folders/modules and a single entry point; `grep -rn "minha-chave-super-secreta-123"` finds nothing in code. (R6)
-- [ ] AC6: Running the smoke test against the refactored app on a free port exits 0; the Phase 3 log shows the baseline vs after comparison with no unexpected difference. (R6, R7)
+- [x] AC1: `reports/logs/project-1-phase12.jsonl` and `project-1-phase3.jsonl` exist and come from `claude-opus-5-5`. (R1)
+- [x] AC2: The Phase 1 block matches R2. (R2)
+- [x] AC3: `reports/audit-project-1.md` passes the report checks and ≥5 of its findings map to manual-analysis rows of project 1. (R3, R5)
+- [x] AC4: `git status --porcelain code-smells-project` is empty right after the phase12 run. (R4)
+- [x] AC5: The refactored tree has config, models, views or routes, controllers and middleware folders/modules and a single entry point; `grep -rn "minha-chave-super-secreta-123"` finds nothing in code. (R6)
+- [x] AC6: Running the smoke test against the refactored app on a free port exits 0; the Phase 3 log shows the baseline vs after comparison with no unexpected difference. (R6, R7)
 
 ## Unit tests
 - T1: `tests/test_reports.py` — for each existing `reports/audit-project-*.md`: has `## Summary` and `## Findings`; ≥5 `### [SEVERITY]` findings; ≥1 CRITICAL or HIGH; severities non-increasing in order; every finding has a `File:` line matching `path:\d+(-\d+)?`; summary counts equal the counted findings (AC3).

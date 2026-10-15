@@ -28,7 +28,7 @@ Paths are relative to this skill's folder.
 - **Exclude from every count and scan:** the skill folder itself (`.claude/`), version control (`.git/`), dependency folders (`node_modules/`, `.venv/`, `venv/`, `vendor/`), build output (`dist/`, `build/`, `__pycache__/`) and database files.
 - **Cite exact locations.** Every finding must point to `path:line` or `path:start-end`, relative to the project root, verified by reading the file — never estimated.
 - **Report only what you can see in the code.** Do not invent findings to fill a quota and do not hide findings to look clean.
-- **Do not commit or push.** Version control is the user's decision.
+- **Do not commit, push or touch the git index.** Never run `git add`, `git rm`, `git commit`, `git reset`, `git stash` or `git checkout`; version control is the user's decision.
 - **Stay technology-agnostic.** Detect the stack first and apply the matching heuristics from the references; when a stack is not covered explicitly, use the generic guidance and say so in the Phase 1 block.
 
 ## Phase 1 — Analysis
@@ -101,7 +101,7 @@ The smoke test must boot the application as a subprocess on a free port with a *
 
 1. Install the dependencies in the project (use a project-local virtual environment for Python, `npm install` for Node.js) and boot the refactored application with its documented start command on a free port. It must start without errors.
 2. Run the smoke test. It must pass.
-3. Compare each endpoint with the baseline: status codes must match, except where the guidelines allow it (an admin route called without the token). Response body keys must match, except for sensitive fields that were removed on purpose.
+3. Compare each endpoint with the baseline, calling it **exactly as in the baseline (no admin token)**: status codes must match, except for admin routes as defined in the guidelines (401 without the token, original status with it). Any other difference is a failure to fix, not a note. Response body keys must match, except for sensitive fields that were removed on purpose.
 4. Re-scan the new code with the catalog and list any finding that remains, with the reason.
 5. If anything fails, fix the code and validate again. **Make at most 3 fix attempts.** If it still fails, stop and report exactly what fails — never claim success for a check that did not pass.
 6. Stop every server you started and delete the temporary directories.
